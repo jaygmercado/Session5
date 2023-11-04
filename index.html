@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 5</title>
+    <style>
+      /*
+            1. box-sizing
+                content-box -> (default)
+                    width: 100px; -> include only the width of the content
+                    padding: 10px;
+                    border: 10px;
+                                    content  padding-left     padding-right       border-left      border-right
+                    ELEMENT WIDTH:      100 +         10       +       10          +       10     +      10          = 140px;
+                    content width: 100px;
+
+                border-box -> most used among developers
+                    width: 100px; -> includes the width of the content, padding, and border
+                    padding: 10px;
+                    border: 10px;
+
+                    ELEMENT WIDTH:  100px;
+                                        content      padding-left     padding-right       border-left      border-right
+                    content WIDTH:      100     -         10      -       10         -       10     -     10          = 60px;
+        */
+
+      /*
+            2. Universal reset
+                It is recommended to always add these rules at the top
+        */
+      * {
+        box-sizing: border-box;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      #super-container {
+        position: static;
+        left: 20px;
+        height: 100vh;
+        width: 100vw;
+        border: 10px solid green;
+      }
+
+      .container {
+        position: relative;
+        left: 100px;
+        height: 40vh;
+        width: 50vh;
+        margin-bottom: 5px;
+        border: 10px solid black;
+      }
+
+      /*
+        1. By default, an element is positioned at the top-left corner of its parent
+
+      */
+      .box {
+        height: 100px;
+        width: 100px;
+        padding: 10px;
+        border: 10px solid red;
+        background-color: green;
+        /*
+            4. position: static
+                Default value for the position property
+                Ignore the positioning properties: left, top, right, bottom
+        */
+        /*
+        position: static;
+         */
+
+        /*
+            5. position: fixed;
+                Element positioned againsted the viewport
+                Does not contribute to the size of the parent
+                Margins do not work
+                Best practice: use both a horizontal and a vertical positioning property
+         */
+
+        /* position: fixed;
+        left:  100px;
+        bottom: 100px; */
+
+        /*
+            6. position: relative
+                By default, the relative value is like the static
+                Respects the positioning properties: left, top, right, bottom
+                Does not affect the position of its siblings
+                Moves the element relative to its original position
+        */
+        /* position: relative;
+        right: 0px;
+        top: 50px; */
+
+        /* 
+            8. z-index
+                Specifies the stack order of elements
+                The element with the highest value will be on top
+        */
+        /* z-index: -100; */
+
+        /*
+             7. position: absolute
+                Does not contribute to the size of its parent
+                Positioned relative to its parent
+                Best practice: use both a horizontal and a vertical positioning property
+                Moves the element relative to its nearest ascendant with relative position
+        */
+        /* position: absolute;
+        left: 20px;
+        top: 60px; */
+
+        /* 
+            9. position: sticky
+                Sets the position according to the parent element.
+        */
+        /* position: sticky;
+        top: 10px; */
+      }
+
+      #box2 {
+        height: 100px;
+        width: 100px;
+        padding: 10px;
+        border: 10px solid blue;
+        background-color: yellow;
+        /* z-index: 2100; */
+      }
+    </style>
+  </head>
+  <body>
+    <section id="super-container">
+      <section class="container">
+        <section class="box"><strong>Box 1</strong></section>
+      </section>
+
+      <section class="container">
+        <section class="box"><strong>Box 1</strong></section>
+        <section id="box2"><strong>Box 2</strong></section>
+      </section>
+    </section>
+  </body>
+</html>
